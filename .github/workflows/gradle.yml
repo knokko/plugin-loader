@@ -1,4 +1,4 @@
-ame: Testing on various Java versions on Linux, Windows, and MacOS
+name: Testing on various Java versions on Linux, Windows, and MacOS
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [ windows-latest, macos-latest, ubuntu-latest ]
-        jdk: [ 8, 11, 17, 20 ]
+        jdk: [ 11, 17, 20 ]
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK ${{ matrix.jdk }}

@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.jetbrains.kotlin.jvm'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    dependencies {
+        compileOnly project(':')
+    }
+    shadowJar {
+        exclude 'kotlin/**'
+        exclude 'org/intellij/lang/annotations/*'
+        exclude 'org/jetbrains/annotations/*'
+    }
+}
+
+project('twin-b') {
+    dependencies {
+        compileOnly project(':test-plugins:twin-a')
+    }
+}
